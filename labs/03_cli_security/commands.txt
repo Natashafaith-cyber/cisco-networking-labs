@@ -1,18 +1,15 @@
-enable
-configure terminal
-hostname Core-Gateway-01
-
- enable secret RouterHash2026- Enforce Cryptographic Privilege Access Control
+1. enable
+2. configure terminal
+3. hostname Core-Gateway-01
+4.enable secret RouterHash2026- Enforce Cryptographic Privilege Access Control
 
 --- Lock Down and Enforce Local Console Login--- 
-line console 0
- password CoreConsoleGate!
- login
-exit
+ 1. line console 0
+ 2. password CoreConsoleGate!
+ 3. login
+ 4. exit
+ 5. service password-encryption-Encrypt Plaintext System Passwords at Rest *
+ 6. end
+ 7. copy running-config startup-config -Saves Running State to NVRAM Baseline
 
---- Encrypt Plaintext System Passwords at Rest ---
-service password-encryption
-end
-
---- Save Running State to NVRAM Baseline ---
-copy running-config startup-config
+ 
