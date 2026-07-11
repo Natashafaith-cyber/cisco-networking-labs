@@ -19,4 +19,3 @@ Configured correct ip addresses in correct vlans and configured the interfaces f
 4. pinged between the PCs to check connections
 sent a broadcast ping from a pc to ping the subnet to see which pcPCs devices received the broadcast
 
-ALL THIS WAS DONE IN A PACKET TRACER SIMULATION
