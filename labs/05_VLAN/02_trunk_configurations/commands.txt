@@ -1,0 +1,42 @@
+Global VLAN Creation & Naming
+  1.enable 
+  2.configure terminal
+
+  1.vlan [vlan_id] = 10,20,30
+  2.name [vlan_name] =HR,ENGINEERING,SALES
+  3.exit
+
+Access Port Configuration (Assigning PCs)
+1.configure terminal
+
+#  configuring single port
+ 2.interface [interface_id] eg. g0/1
+ 3.switchport mode access
+ 4.switchport access vlan [vlan_id]
+ 5.exit
+
+#  Configuring a range of ports at once
+ 1.interface range [start_interface] - [end_interface]
+ 2.switchport mode access
+ 3.switchport access vlan [vlan_id]
+ 4.exit
+
+         Switch Virtual Interface (SVI) & Management IP      
+   1.configure terminal
+
+# Enter the VLAN interface
+ 1.interface vlan [vlan_id]
+ 2.ip address [ip_address] [subnet_mask]
+ 3.no shutdown
+ 4.show vlan brief-to check vlan database and port assighnments
+ 5.exit
+
+      End Device (PC) IP Configuration
+ 1. ip address [ip_address] [subnet_mask] [gateway_ip]
+ 
+
+# Verify IP addresses and status of all interfaces-show ip interface brief
+
+# Check the running configuration matrix-show running-config
+
+#to save -write memory
