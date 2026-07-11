@@ -1,0 +1,71 @@
+[PC1 Configuration]
+IP Address:       192.168.1.1
+Subnet Mask:      255.255.255.0
+Default Gateway:  192.168.1.254
+
+[PC2 Configuration]
+IP Address:       192.168.3.1
+Subnet Mask:      255.255.255.0
+Default Gateway:  192.168.3.254
+
+Router 1 (R1)
+enable
+configure terminal
+hostname R1
+
+# Interface Configurations
+interface gigabitEthernet 0/1
+ip address 192.168.1.254 255.255.255.0
+no shutdown
+exit
+interface gigabitEthernet 0/0
+ip address 192.168.12.1 255.255.255.0
+no shutdown
+exit
+# Static Route Configurations
+ip route 192.168.13.0 255.255.255.0 192.168.12.2
+ip route 192.168.3.0 255.255.255.0 192.168.12.2
+end
+write memory
+
+Router 2 (R2)
+enable
+configure terminal
+hostname R2
+# Interface Configurations
+interface gigabitEthernet 0/0
+ip address 192.168.12.2 255.255.255.0
+no shutdown
+exit
+interface gigabitEthernet 0/1
+ip address 192.168.13.2 255.255.255.0
+no shutdown
+exit
+# Static Route Configurations
+ip route 192.168.1.0 255.255.255.0 192.168.12.1
+ip route 192.168.3.0 255.255.255.0 192.168.13.3
+end
+write memory
+
+Router 3(R3)
+enable
+configure terminal
+hostname R3
+# Interface Configurations
+interface gigabitEthernet 0/0
+ip address 192.168.13.3 255.255.255.0
+no shutdown
+exit
+interface gigabitEthernet 0/1
+ip address 192.168.3.254 255.255.255.0
+no shutdown
+exit
+# Static Route Configurations
+ip route 192.168.12.0 255.255.255.0 192.168.13.2
+ip route 192.168.1.0 255.255.255.0 192.168.13.2
+end
+write memory
+
+R1# show ip route- to verify the commands
+ping 192.168.3.1 -From the command prompt of PC1, execute a ping to PC2 to confirm successful data transmission and return path mapping
+
