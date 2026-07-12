@@ -28,35 +28,35 @@ interface GigabitEthernet0/0
 exit
 
 --- MULTILAYER SWITCH 2 (SW2) CONFIGURATION ---
-! Enable global IP routing 
+-Enable global IP routing 
 ip routing
 
-! Convert interface to Layer 3 routed port
+-Convert interface to Layer 3 routed port
 interface GigabitEthernet1/0/2
  no switchport
  ip address 10.0.0.193 255.255.255.252
  no shutdown
 exit
 
-! Configure static default route pointing to R1
+-Configure static default route pointing to R1
 ip route 0.0.0.0 0.0.0.0 10.0.0.194
 
 
 STEP 2: SVI (GATEWAY) CONFIGURATION ON SW2
 
- --- VLAN 10 SVI (Subnet: 10.0.0.0/26 | Last Usable: .62) ---
+ --- VLAN 10 SVI (Subnet: 10.0.0.0/26 | Last Usable: .62) 
 interface Vlan10
  ip address 10.0.0.62 255.255.255.192
  no shutdown
 exit
 
- --- VLAN 20 SVI (Subnet: 10.0.0.64/26 | Last Usable: .126) ---
+ --- VLAN 20 SVI (Subnet: 10.0.0.64/26 | Last Usable: .126) 
 interface Vlan20
  ip address 10.0.0.126 255.255.255.192
  no shutdown
 exit
 
- --- VLAN 30 SVI (Subnet: 10.0.0.128/26 | Last Usable: .190) ---
+ --- VLAN 30 SVI (Subnet: 10.0.0.128/26 | Last Usable: .190) 
 interface Vlan30
  ip address 10.0.0.190 255.255.255.192
  no shutdown
