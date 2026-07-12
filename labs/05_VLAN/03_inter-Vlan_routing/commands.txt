@@ -1,0 +1,29 @@
+===================================================================
+STEP 1: LAYER 3 POINT-TO-POINT LINK & ROUTING CONFIGURATION
+===================================================================
+
+--- ROUTER 1 (R1) CONFIGURATION ---
+! Remove old ROAS subinterfaces (assuming standard subinterface numbering)
+interface GigabitEthernet0/0.10
+ no ip address
+ no vlan-id 10
+ shutdown
+exit
+
+interface GigabitEthernet0/0.20
+ no ip address
+ no vlan-id 20
+ shutdown
+exit
+
+interface GigabitEthernet0/0.30
+ no ip address
+ no vlan-id 30
+ shutdown
+exit
+
+! Configure physical interface with point-to-point IP
+interface GigabitEthernet0/0
+ ip address 10.0.0.194 255.255.255.252
+ no shutdown
+exit
