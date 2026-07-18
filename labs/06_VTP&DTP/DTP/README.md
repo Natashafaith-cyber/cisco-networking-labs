@@ -8,8 +8,11 @@ risks associated with Dynamic Trunking Protocol (DTP).
 ## Topology DiagramThe
 network consists of three interconnected Cisco switches (SW1, SW2, SW3) servicing four distinct VLANs across a segmented /26 address space.
 VLAN 10-10.0.0.0/26Green Zone (PC1, PC2, PC5)
+
 VLAN 20-10.0.0.64/26Yellow Zone (PC6, PC9)
+
 VLAN 30-10.0.0.128/26Red Zone (PC3, PC7)
+
 VLAN 40-10.0.0.192/26Purple Zone (PC4, PC4 )
 
  ## Technical Tasks
