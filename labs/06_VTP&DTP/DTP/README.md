@@ -19,7 +19,7 @@ VLAN 40-10.0.0.192/26Purple Zone (PC4, PC4 )
 ### Task 1: Switchport Trunking & DTP Mitigation
 Objective: Configure inter-switch links as static trunk ports and disable Dynamic Trunking Protocol (DTP) to prevent unauthorized trunk negotiation.
 
-        #### configurations sample
+        configurations sample
         
 SW1# configure terminal
 
@@ -35,7 +35,7 @@ SW1# show interfaces GigabitEthernet 0/1 switchport
 
 Objective: Establish SW1 as the VTP Server within the domain Natalie and create production VLANs.
 
-       #### configuration sample
+        configuration sample
        
 SW1(config)# vtp domain Natalie
 
@@ -63,10 +63,29 @@ SW3(config)# vtp mode client
 
 SW3(config)# vlan 50
 
-    ####Analysis: 
+### Task 5: Access Port Hardening
+Objective: Explicitly assign edge ports connecting to end hosts into their respective VLANs and disable DTP on those interfaces.
+
+        configuration sample
+
+SW1(config)# interface FastEthernet 0/1
+
+SW1(config-if)# switchport mode access
+
+SW1(config-if)# switchport access vlan 10
+
+SW1(config-if)# switchport nonegotiate
+
+SW1# show interfaces FastEthernet 0/1 switchport
+
+           Analysis: 
     
    1. SW3 will automatically inherit VLANs 10, 20, and 30 from the server. SW2 will not add them to its database but will pass the VTP advertisements along.
      
-   2. VLAN 40 remains local to SW2. It is not added to the VLAN databases of SW1 or SW3, proving that transparent switches do not synchronize their databases with       the VTP domain.
+   2. VLAN 40 remains local to SW2. It is not added to the VLAN databases of SW1 or SW3, proving that transparent switches do not synchronize their databases with            the VTP domain.
 
    3. The switch correctly blocks local configuration, enforcing centralized VLAN management via the VTP Server.
+
+   4. Analysis: By enforcing switchport mode access and nonegotiate, DTP is disabled, mitigating potential VLAN hopping exploits.
+
+   5. VTP Behavior: VTP Transparent switches function as relays for VTP advertisements without altering their own local configurations. VTP Clients strictly prohibit         any write operations to the local VLAN database.
