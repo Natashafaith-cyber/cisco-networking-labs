@@ -46,4 +46,27 @@ SW1(config)# vlan 10
 SW1(config)# vlan 20
 
 SW1(config)# vlan 30
+
+### Task 3: VTP Transparent Mode Configuration
+Objective: Configure SW2 in VTP Transparent mode to isolate its local VLAN database while permitting the forwarding of VTP advertisements to other switches.
+
+SW2(config)# vtp mode transparent
+
+SW2(config)# vlan 40
+
+### Task 4: VTP Client Mode & Database Restrictions
+Objective: Configure SW3 as a VTP Client to test local modification restrictions.prove VTP VLAN configuration not allowed when device is in CLIENT mode.
+
+SW3(config)# vtp domain Natalie
+
+SW3(config)# vtp mode client
+
+SW3(config)# vlan 50
+
+    ####Analysis: 
     
+   1. SW3 will automatically inherit VLANs 10, 20, and 30 from the server. SW2 will not add them to its database but will pass the VTP advertisements along.
+     
+   2. VLAN 40 remains local to SW2. It is not added to the VLAN databases of SW1 or SW3, proving that transparent switches do not synchronize their databases with       the VTP domain.
+
+   3. The switch correctly blocks local configuration, enforcing centralized VLAN management via the VTP Server.
