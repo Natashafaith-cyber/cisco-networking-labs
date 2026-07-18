@@ -1,4 +1,5 @@
-### Global and Interface Configuration Commands
+          Global and Interface Configuration Commands
+
 configure terminal
 interface GigabitEthernet 0/1
 interface GigabitEthernet 0/2
@@ -7,3 +8,21 @@ switchport mode trunk
 switchport mode access
 switchport access vlan 10
 switchport nonegotiate
+
+          VLAN and VTP Configuration Commands
+
+vlan 10
+vlan 20
+vlan 30
+vlan 40
+vtp domain Natalie
+vtp mode server
+vtp mode transparent
+vtp mode client
+
+         Verification & Troubleshooting Commands
+
+show interfaces GigabitEthernet 0/1 switchport
+show interfaces FastEthernet 0/1 switchport
+show vlan brief
+show vtp status
