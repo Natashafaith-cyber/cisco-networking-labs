@@ -1,0 +1,9 @@
+### Global and Interface Configuration Commands
+configure terminal
+interface GigabitEthernet 0/1
+interface GigabitEthernet 0/2
+interface FastEthernet 0/1
+switchport mode trunk
+switchport mode access
+switchport access vlan 10
+switchport nonegotiate
