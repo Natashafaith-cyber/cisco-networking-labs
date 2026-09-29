@@ -1,0 +1,10 @@
+**CLI State Inspection:** Utilized Cisco IOS verification commands to confirm operational states.
+
+# Display general STP status, Root ID, Local BID, and Port Roles for VLAN 1
+Switch# show spanning-tree vlan 1
+
+# Display detailed BPDU exchange counters and timers
+Switch# show spanning-tree detail
+
+# View brief summaries of interface states and designated bridge IDs
+Switch# show spanning-tree summary
