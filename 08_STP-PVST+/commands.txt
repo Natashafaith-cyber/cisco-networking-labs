@@ -1,0 +1,86 @@
+CISCO PACKET TRASER: STP LOAD BALANCING & TUNING LAB COMMANDS
+
+SW1 CONFIGURATION (Root for VLAN 1, Secondary for VLAN 2)
+
+enable
+configure terminal
+hostname SW1
+
+! Configure Per-VLAN Load Balancing
+spanning-tree vlan 1 root primary
+spanning-tree vlan 2 root secondary
+
+! Task 3: Port Priority Tuning Test
+interface FastEthernet0/1
+spanning-tree port-priority 240
+exit
+
+end
+write memory
+
+SW2 CONFIGURATION (Root for VLAN 2, Secondary for VLAN 1)
+
+enable
+configure terminal
+hostname SW2
+
+! Configure Per-VLAN Load Balancing
+spanning-tree vlan 2 root primary
+spanning-tree vlan 1 root secondary
+
+end
+write memory
+
+SW3 CONFIGURATION (Access Port Hardening)
+
+enable
+configure terminal
+hostname SW3
+
+! Task 4: PortFast and BPDU Guard on Access Port
+interface FastEthernet0/3
+switchport mode access
+spanning-tree portfast
+spanning-tree bpduguard enable
+exit
+
+end
+write memory
+
+SW4 CONFIGURATION (Cost Manipulation & Access Port Hardening)
+
+enable
+configure terminal
+hostname SW4
+
+! Task 2: STP Cost Manipulation for Path Selection
+interface FastEthernet0/2
+spanning-tree vlan 1 cost 102
+exit
+
+! Task 4: PortFast and BPDU Guard on Access Port
+interface FastEthernet0/3
+switchport mode access
+spanning-tree portfast
+spanning-tree bpduguard enable
+exit
+
+end
+write memory
+
+
+VERIFICATION COMMANDS
+
+! Verify STP Root Bridge & Port States on SW1 and SW2:
+show spanning-tree vlan 1
+show spanning-tree vlan 2
+
+! Verify Path Cost changes on SW4:
+show spanning-tree vlan 1
+
+! Verify Root Port and Priority behavior on SW3:
+show spanning-tree vlan 1
+
+! Verify PortFast and BPDU Guard Status on SW3 / SW4:
+show running-config interface FastEthernet0/3
+show spanning-tree interface FastEthernet0/3 detail
