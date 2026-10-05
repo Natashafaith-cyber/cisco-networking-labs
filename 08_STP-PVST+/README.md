@@ -22,9 +22,9 @@ This Cisco Packet Tracer lab demonstrates the implementation, manipulation, and 
 
 * **Access Ports**:
 
-      SW3 FastEthernet0/3 (Host Connection)
+     SW3 FastEthernet0/3 (Host Connection)
 
-      SW4 FastEthernet0/3 (Host Connection)
+     SW4 FastEthernet0/3 (Host Connection)
 
 # Lab Execution & Technical Analysis
 
