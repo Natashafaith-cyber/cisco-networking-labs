@@ -47,9 +47,10 @@ Root Bridge: SW1 was elected as the root bridge for VLAN 1, verified via bridge 
 
 Port States: All active ports on the root bridge operate in the Designated role and Forwarding state (Desg FWD).
 
-#W  Key Differences: STP (802.1D) vs. RSTP (802.1w)
-Port States: RSTP consolidates traditional states into Discarding, Learning, and Forwarding.
+##  Key Differences: STP (802.1D) vs. RSTP (802.1w)
 
-Port Roles: Introduces Alternate and Backup roles to eliminate the max-age timer dependency during link failures.
+* **Port States**: RSTP consolidates traditional states into Discarding, Learning, and Forwarding.
 
-Convergence Time: Reduces topology convergence from 30–50 seconds down to milliseconds.
+* **Port Roles**: Introduces Alternate and Backup roles to eliminate the max-age timer dependency during link failures.
+
+* **Convergence Time**: Reduces topology convergence from 30–50 seconds down to milliseconds.
