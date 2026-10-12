@@ -28,12 +28,19 @@ To ensure user-facing access ports transition instantly to the forwarding state 
 * **Plaintext**
 
 enable
+
 configure terminal
+
  interface FastEthernet0/24
+
   switchport mode access
+
   spanning-tree portfast
+
   spanning-tree link-type point-to-point
+
  end
+
 ## Verification & Findings
 Root Bridge Status (show spanning-tree)
 Root Bridge: SW1 was elected as the root bridge for VLAN 1, verified via bridge parameters and root status indicators.
