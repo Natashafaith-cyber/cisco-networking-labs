@@ -16,13 +16,18 @@ Protocol Mode: Rapid PVST+ (spanning-tree mode rapid-pvst)
 # VLAN Configured: VLAN 1
 
  ## Configuration Summary
-Enabling Rapid PVST+ Globally
-Plaintext
+### Enabling Rapid PVST+ Globally
+* **Plaintext**
+
 enable
+
 configure terminal
+
  spanning-tree mode rapid-pvst
+
 end
-Configuring Edge Ports & Link Types
+
+### Configuring Edge Ports & Link Types
 To ensure user-facing access ports transition instantly to the forwarding state and optimize convergence parameters:
 
 * **Plaintext**
@@ -43,9 +48,10 @@ configure terminal
 
 ## Verification & Findings
 Root Bridge Status (show spanning-tree)
-Root Bridge: SW1 was elected as the root bridge for VLAN 1, verified via bridge parameters and root status indicators.
 
-Port States: All active ports on the root bridge operate in the Designated role and Forwarding state (Desg FWD).
+* **Root Bridge**: SW1 was elected as the root bridge for VLAN 1, verified via bridge parameters and root status indicators.
+
+* **Port States**: All active ports on the root bridge operate in the Designated role and Forwarding state (Desg FWD).
 
 ##  Key Differences: STP (802.1D) vs. RSTP (802.1w)
 
