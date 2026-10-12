@@ -1,0 +1,18 @@
+! Global RSTP Mode Configuration
+enable
+configure terminal
+ spanning-tree mode rapid-pvst
+end
+
+! Configuring Link Type and PortFast on Edge Ports
+enable
+configure terminal
+ interface FastEthernet0/24
+  spanning-tree link-type point-to-point
+  spanning-tree portfast
+ end
+
+! Verification Commands
+show spanning-tree
+show spanning-tree vlan 1
+show spanning-tree interface FastEthernet0/24
