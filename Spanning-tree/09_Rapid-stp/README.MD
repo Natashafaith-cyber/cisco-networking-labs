@@ -26,6 +26,7 @@ Configuring Edge Ports & Link Types
 To ensure user-facing access ports transition instantly to the forwarding state and optimize convergence parameters:
 
 * **Plaintext**
+
 enable
 configure terminal
  interface FastEthernet0/24
