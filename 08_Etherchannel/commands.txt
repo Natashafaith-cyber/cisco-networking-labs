@@ -1,0 +1,92 @@
+
+ 1. ASW1 Configuration (LACP Layer 2 Trunk to DSW1)
+ 
+enable
+configure terminal
+ interface range GigabitEthernet1/0/1 - 2
+  channel-group 1 mode active
+ exit
+ interface Port-channel 1
+  switchport mode trunk
+ exit
+ port-channel load-balance src-dst-ip
+end
+
+
+ 2. DSW1 Configuration (LACP L2 Trunk & Static L3 Channel to DSW2)
+
+enable
+configure terminal
+ interface range GigabitEthernet1/0/1 - 2
+  channel-group 1 mode active
+ exit
+ interface Port-channel 1
+  switchport mode trunk
+ exit
+
+ ! Static L3 EtherChannel to DSW2
+ interface range GigabitEthernet1/0/3 - 4
+  no switchport
+  channel-group 3 mode on
+ exit
+ interface Port-channel 3
+  no switchport
+  ip address 10.0.0.1 255.255.255.252
+ exit
+
+ ip routing
+ ip route 172.16.2.0 255.255.255.0 10.0.0.2
+ port-channel load-balance src-dst-ip
+end
+
+
+
+ 3. ASW2 Configuration (PAgP Layer 2 Trunk to DSW2)
+
+enable
+configure terminal
+ interface range GigabitEthernet1/0/1 - 2
+  channel-group 2 mode desirable
+ exit
+ interface Port-channel 2
+  switchport mode trunk
+ exit
+ port-channel load-balance src-dst-ip
+end
+
+
+
+ 4. DSW2 Configuration (PAgP L2 Trunk & Static L3 Channel to DSW1)
+
+enable
+configure terminal
+ interface range GigabitEthernet1/0/1 - 2
+  channel-group 2 mode desirable
+ exit
+ interface Port-channel 2
+  switchport mode trunk
+ exit
+
+ ! Static L3 EtherChannel to DSW1
+ interface range GigabitEthernet1/0/3 - 4
+  no switchport
+  channel-group 3 mode on
+ exit
+ interface Port-channel 3
+  no switchport
+  ip address 10.0.0.2 255.255.255.252
+ exit
+
+ ip routing
+ ip route 172.16.1.0 255.255.255.0 10.0.0.1
+ port-channel load-balance src-dst-ip
+end
+
+
+
+ 5. Verification Commands
+
+show etherchannel summary
+show etherchannel load-balance
+show interface trunk
+show ip route
