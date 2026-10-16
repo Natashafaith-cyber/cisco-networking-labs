@@ -33,6 +33,11 @@ The lab environment is structured into two primary access switches and two distr
 
 * **Destination Server (SRV1):** Connected directly via `GigabitEthernet0/1` on the server edge segment, `SRV1` operates on the `172.16.2.1/24` IP address space, serving as the target destination for traffic originating from the access layer clients (`PC1` and `PC2`) across the routed EtherChannel core.
 
+## 3. Key Protocol Details
+* **LACP (Link Aggregation Control Protocol):** Open-standard protocol (IEEE 802.3ad) operating in `active` or `passive` mode. Used between ASW1 and DSW1.
+* **PAgP (Port Aggregation Protocol):** Cisco-proprietary protocol operating in `desirable` or `auto` mode. Used between ASW2 and DSW2.
+* **Static EtherChannel:** Forced bundling (`mode on`) without negotiation protocols. Used for the Layer 3 backbone link between DSW1 and DSW2.
+
 
 
 
