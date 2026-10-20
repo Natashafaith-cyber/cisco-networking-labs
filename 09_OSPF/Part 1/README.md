@@ -24,3 +24,8 @@ It connects to `R2` (`10.0.12.0/30`) and `R3` (`10.0.13.0/30`).
 * **Router 2 (R2):** Interconnects with `R1` and links downward to `R4` via the `10.0.24.0/30` subnet.
 * **Router 3 (R3):** Interconnects with `R1` and links downward to `R4` via the `10.0.34.0/30` subnet.
 * **Router 4 (R4):** Serves as the aggregation router for the local area network, connecting to switch `SW1` and client `PC1` on the `192.168.4.0/24` subnet.
+
+## 3. Key Configuration Concepts
+* **OSPF Process ID & Wildcard Masks:** OSPF was configured using process routing identifiers with wildcard masks matching individual interfaces or subnets.
+* **Passive Interfaces:** Loopback interfaces and downstream LAN-facing interfaces were set to passive to suppress unnecessary OSPF hello packets while advertising the connected subnets.
+* **Default Route Origination:** The `default-information originate` command was used on R1 to distribute gateway connectivity across all OSPF routers in Area 0.
