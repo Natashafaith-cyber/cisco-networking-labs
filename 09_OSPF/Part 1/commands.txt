@@ -132,4 +132,9 @@ configure terminal
 end
 write memory
 
+! Verification Commands
+show ip route
+show ip ospf neighbor
+show ip protocols
+
 
