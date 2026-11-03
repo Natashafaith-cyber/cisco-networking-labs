@@ -67,3 +67,33 @@ interface GigabitEthernet0/0/1
 end
 write memory
 
+                                                         ! R3 Configuration
+enable
+configure terminal
+ hostname R3
+
+ interface loopback 0
+  ip address 3.3.3.3 255.255.255.255
+  ip ospf 1 area 0
+ exit
+
+ interface FastEthernet1/0
+  ip address 10.0.13.2 255.255.255.252
+  no shutdown
+  ip ospf 1 area 0
+ exit
+
+ interface FastEthernet2/0
+  ip address 10.0.34.1 255.255.255.252
+  no shutdown
+  ip ospf 1 area 0
+ exit
+
+router ospf 1
+  router-id 3.3.3.3
+  auto-cost reference-bandwidth 100000
+  passive-interface loopback 0
+ exit
+end
+write memory
+
