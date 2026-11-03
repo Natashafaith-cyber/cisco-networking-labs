@@ -20,3 +20,18 @@ focusing on direct interface-level OSPF activation, reference bandwidth cost tun
     
 12. Used Simulation mode to analyze OSPF Hello messages and inspect header fields.
 
+
+## 2. Network Topology & Device Layout
+
+The network consists of an external gateway router (`ISPR1`), four internal routers (`R1`, `R2`, `R3`, `R4`), an access switch (`SW1`), and an end host (`PC1`).
+
+* **ISPR1 & R1 Connection:** `ISPR1` links to `R1` over the public `203.0.113.0/30` subnet. OSPF is purposely omitted from this external interface.
+* **Router 1 (R1):** Functions as the ASBR, connecting to `R2` (`10.0.12.0/30`), `R3` (`10.0.13.0/30`), and `ISPR1`. It originates a default route into Area 0.
+* **Router 2 (R2):** Interconnects with `R1` and links downward to `R4` via the `10.0.24.0/30` subnet.
+* **Router 3 (R3):** Interconnects with `R1` and links downward to `R4` via the `10.0.34.0/30` subnet.
+* **Router 4 (R4):** Aggregates local traffic, connecting to switch `SW1` and client `PC1` on the `192.168.4.0/24` network.
+* 
+
+
+    
+
