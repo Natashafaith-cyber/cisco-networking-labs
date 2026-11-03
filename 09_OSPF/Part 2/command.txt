@@ -1,4 +1,4 @@
-! R1 Configuration (ASBR & Direct Interface OSPF)
+                                        ! R1 Configuration (ASBR & Direct Interface OSPF)
 
 enable
 configure terminal
@@ -36,3 +36,6 @@ interface FastEthernet1/0
  ip route 0.0.0.0 0.0.0.0 203.0.113.1
 end
 write memory
+
+                                                   ! R2 Configuration
+
