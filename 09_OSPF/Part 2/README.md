@@ -30,7 +30,13 @@ The network consists of an external gateway router (`ISPR1`), four internal rout
 * **Router 2 (R2):** Interconnects with `R1` and links downward to `R4` via the `10.0.24.0/30` subnet.
 * **Router 3 (R3):** Interconnects with `R1` and links downward to `R4` via the `10.0.34.0/30` subnet.
 * **Router 4 (R4):** Aggregates local traffic, connecting to switch `SW1` and client `PC1` on the `192.168.4.0/24` network.
-* 
+
+## 3. Key Concepts & Configuration Highlights
+* **Interface-Level OSPF Activation:** Instead of wildcard network commands, OSPF is enabled directly under individual physical and loopback interfaces using the `ip ospf <process-id> area <area-id>` command.
+* **Reference Bandwidth Tuning:** By default, OSPF treats FastEthernet and Gigabit interfaces equally (cost of 1) under older IOS standards.
+   Setting the reference bandwidth to 100 Gbps (`100000` Mbps) scales the cost accurately so FastEthernet links evaluate to a cost of 100 (`100000 / 100`).
+* **Default Route Propagation:** The `default-information originate` command advertises a Type-5 External default route across the OSPF domain.
+  
 
 
     
