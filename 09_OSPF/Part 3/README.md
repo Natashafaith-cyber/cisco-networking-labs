@@ -15,9 +15,9 @@ setting a clock rate of `128000` on the DCE interface, and enabled OSPF across `
 
    ## 2. Network Topology & Troubleshooting Analysis
 
-* **Core Area 0 Layout:** Connects multiple routers (`R1`, `R2`, `R3`, `R4`, `R5`) alongside local subnets (`10.0.1.0/24`, `10.0.2.0/24`, `192.168.12.0/30`, `192.168.34.0/30`)[cite: 8].
-* **External Gateway (ISPR1):** Connects via the `203.0.113.0/30` public subnet to handle exterior routing requests[cite: 8].
+* **Core Area 0 Layout:** Connects multiple routers (`R1`, `R2`, `R3`, `R4`, `R5`) alongside local subnets (`10.0.1.0/24`, `10.0.2.0/24`, `192.168.12.0/30`, `192.168.34.0/30`).
+* **External Gateway (ISPR1):** Connects via the `203.0.113.0/30` public subnet to handle exterior routing requests.
 * **Troubleshooting Root Causes:**
-  * *Serial Link Setup:* Serial interfaces require manual clock rate parameters when acting as DCE, alongside active OSPF network statements or interface-level enablement[cite: 8].
+  * *Serial Link Setup:* Serial interfaces require manual clock rate parameters when acting as DCE, alongside active OSPF network statements or interface-level enablement.
   * *Adjacency Blocks:* Neighbor formations often fail due to mismatched hello/dead timers, area ID mismatches, authentication errors, or shut-down physical interfaces.
-  * *External Pings:* Missing default routes or incorrect next-hop redistribution blocks end hosts from reaching external IPs like `8.8.8.8`[cite: 8].
+  * *External Pings:* Missing default routes or incorrect next-hop redistribution blocks end hosts from reaching external IPs like `8.8.8.8`.
