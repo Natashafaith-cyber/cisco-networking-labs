@@ -16,3 +16,23 @@ interface Serial0/0/0
  no shutdown
  ip ospf 1 area 0
 exit
+
+! 2. Troubleshooting & Fixing OSPF Neighbor Adjacencies (e.g., R2, R4, R5)
+enable
+configure terminal
+router ospf 1
+ no passive-interface GigabitEthernet0/0
+exit
+interface GigabitEthernet0/0
+ no shutdown
+exit
+
+! 3. Default Route & External Connectivity Fix (ASBR / Gateway)
+enable
+configure terminal
+router ospf 1
+ default-information originate
+exit
+ip route 0.0.0.0 0.0.0.0 203.0.113.1
+end
+write memory
