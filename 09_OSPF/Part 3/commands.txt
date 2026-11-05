@@ -36,3 +36,9 @@ exit
 ip route 0.0.0.0 0.0.0.0 203.0.113.1
 end
 write memory
+
+! 4. Verification & Diagnostic Commands
+show ip ospf neighbor
+show ip route
+show ip ospf database
+show ip protocols
