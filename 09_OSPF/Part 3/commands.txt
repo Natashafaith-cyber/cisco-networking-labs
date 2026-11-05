@@ -1,0 +1,18 @@
+! 1. R1 & R2 Serial Link & OSPF Configuration
+enable
+configure terminal
+
+! On the DCE router side (e.g., R1):
+interface Serial0/0/0
+ ip address 192.168.12.1 255.255.255.252
+ clock rate 128000
+ no shutdown
+ ip ospf 1 area 0
+exit
+
+! On R2:
+interface Serial0/0/0
+ ip address 192.168.12.2 255.255.255.252
+ no shutdown
+ ip ospf 1 area 0
+exit
