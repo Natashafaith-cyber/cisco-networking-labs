@@ -13,3 +13,19 @@ configure terminal
 ip route 10.0.1.0 255.255.255.0 <Next-Hop-IP> 130
 end
 write memory
+
+! 2. Testing & Link Failure Simulation Commands
+
+! Simulate primary link failure for testing failover:
+enable
+configure terminal
+interface GigabitEthernet0/2/0
+ shutdown
+end
+
+! To restore the interface:
+enable
+configure terminal
+interface GigabitEthernet0/2/0
+ no shutdown
+end
