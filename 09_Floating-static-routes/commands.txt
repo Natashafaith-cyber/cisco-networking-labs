@@ -29,3 +29,9 @@ configure terminal
 interface GigabitEthernet0/2/0
  no shutdown
 end
+
+! 3. Verification Commands
+show ip route
+show ip route static
+ping 10.0.2.1
+ping 1.1.1.1
