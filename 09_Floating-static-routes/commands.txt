@@ -1,0 +1,15 @@
+! 1. Configuring Floating Static Routes on R1 & R2
+
+! On R1 (Example configuration with a higher administrative distance of 130):
+enable
+configure terminal
+ip route 10.0.2.0 255.255.255.0 <Next-Hop-IP> 130
+end
+write memory
+
+! On R2:
+enable
+configure terminal
+ip route 10.0.1.0 255.255.255.0 <Next-Hop-IP> 130
+end
+write memory
