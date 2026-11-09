@@ -62,3 +62,31 @@ write memory
 
 
 ! 3. R3 Configuration
+
+enable
+configure terminal
+ hostname R3
+
+ interface loopback 0
+  ip address 3.3.3.3 255.255.255.255
+  ip eigrp 100
+ exit
+
+ interface FastEthernet1/0
+  ip address 10.0.13.2 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ interface FastEthernet2/0
+  ip address 10.0.34.1 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ router eigrp 100
+  no auto-summary
+  passive-interface loopback 0
+ exit
+end
+write memory
