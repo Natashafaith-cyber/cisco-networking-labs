@@ -128,3 +128,10 @@ configure terminal
  exit
 end
 write memory
+
+! 5. Verification Commands
+
+show ip route eigrp
+show ip eigrp neighbors
+show ip eigrp topology
+show ip protocols
