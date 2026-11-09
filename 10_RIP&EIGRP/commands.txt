@@ -1,1 +1,31 @@
 ! 1. R1 Configuration (EIGRP AS 100 & Unequal-Cost Load Balancing)
+
+enable
+configure terminal
+ hostname R1
+
+ interface loopback 0
+  ip address 1.1.1.1 255.255.255.255
+  ip eigrp 100
+ exit
+
+ interface GigabitEthernet0/0/1
+  ip address 10.0.12.1 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ interface FastEthernet1/0
+  ip address 10.0.13.1 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ router eigrp 100
+  no auto-summary
+  passive-interface loopback 0
+  ! Configure variance for unequal-cost load balancing toward 192.168.4.0/24
+  variance <multiplier-value>
+ exit
+end
+write memory
