@@ -17,9 +17,10 @@ disabling automatic summarization, configuring passive interfaces, and implement
    
 ## 2. Network Topology & Routing Architecture
 
-* **Autonomous System:** EIGRP AS 100[cite: 9]
-* **Core Routers:** `R1`, `R2`, `R3`, and `R4` configured in a multi-path topology with redundant paths linking through `R2` and `R3`[cite: 9].
-* **Access Layer:** Router `R4` connects directly to switch `SW1` and end client `PC1` on the `192.168.4.0/24` subnet[cite: 9].
+* **Autonomous System:** EIGRP AS 100
+* **Core Routers:** `R1`, `R2`, `R3`, and `R4` configured in a multi-path topology with redundant paths linking through `R2` and `R3`.
+* **Access Layer:** Router `R4` connects directly to switch `SW1` and end client `PC1` on the `192.168.4.0/24` subnet.
 * **EIGRP Concepts Applied:**
   * **Interface-Level Activation:** Running EIGRP directly on interfaces using `ip eigrp <as-number>` rather than broad network wildcard commands.
-  * **Unequal-Cost Load Balancing:** Utilizing the `variance` command to allow EIGRP to install backup paths (feasible successors) that have a higher metric than the successor route into the routing table.
+  * **Unequal-Cost Load Balancing:** Utilizing the `variance` command to allow EIGRP to install backup paths (feasible successors)
+   that have a higher metric than the successor route into the routing table.
