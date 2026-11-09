@@ -29,3 +29,5 @@ configure terminal
  exit
 end
 write memory
+
+! 2. R2 Configuration
