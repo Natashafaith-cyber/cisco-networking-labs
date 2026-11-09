@@ -88,5 +88,7 @@ configure terminal
   no auto-summary
   passive-interface loopback 0
  exit
+
+! 4. R4 Configuration
 end
 write memory
