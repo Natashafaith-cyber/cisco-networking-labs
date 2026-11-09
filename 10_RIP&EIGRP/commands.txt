@@ -59,3 +59,6 @@ configure terminal
  exit
 end
 write memory
+
+
+! 3. R3 Configuration
