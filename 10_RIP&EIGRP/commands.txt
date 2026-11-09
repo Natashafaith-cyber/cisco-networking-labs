@@ -31,3 +31,31 @@ end
 write memory
 
 ! 2. R2 Configuration
+
+enable
+configure terminal
+ hostname R2
+
+ interface loopback 0
+  ip address 2.2.2.2 255.255.255.255
+  ip eigrp 100
+ exit
+
+ interface GigabitEthernet0/0/0
+  ip address 10.0.12.2 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ interface GigabitEthernet0/0/1
+  ip address 10.0.24.1 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ router eigrp 100
+  no auto-summary
+  passive-interface loopback 0
+ exit
+end
+write memory
