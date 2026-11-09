@@ -89,6 +89,42 @@ configure terminal
   passive-interface loopback 0
  exit
 
+end
+write memory
+
 ! 4. R4 Configuration
+
+enable
+configure terminal
+ hostname R4
+
+ interface loopback 0
+  ip address 4.4.4.4 255.255.255.255
+  ip eigrp 100
+ exit
+
+ interface GigabitEthernet0/0/1
+  ip address 10.0.24.2 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ interface FastEthernet2/0
+  ip address 10.0.34.2 255.255.255.252
+  no shutdown
+  ip eigrp 100
+ exit
+
+ interface GigabitEthernet0/0
+  ip address 192.168.4.254 255.255.255.0
+  no shutdown
+  ip eigrp 100
+ exit
+
+ router eigrp 100
+  no auto-summary
+  passive-interface loopback 0
+  passive-interface GigabitEthernet0/0
+ exit
 end
 write memory
