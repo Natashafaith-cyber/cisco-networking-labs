@@ -19,3 +19,8 @@ The topology connects two client LAN segments through a pair of routers (`R1` an
 * **LAN 1 (`PC1` & `SW1`):** Connected to `R1`'s `GigabitEthernet0/1` interface on subnet `2001:DB8::/64`[cite: 9]. `PC1` is assigned `2001:DB8::2/64` and uses `R1`'s EUI-64-derived IPv6 address as its default gateway.
 * **Router-to-Router Transit (`R1` `G0/0` — `R2` `G0/0`):** Operates without global unicast addresses (`ipv6 enable`), relying purely on auto-generated link-local addresses (`FE80::/10`) for neighbor reachability and static route next-hop resolution.
 * **LAN 2 (`PC2` & `SW2`):** Connected to `R2`'s `GigabitEthernet0/1` interface on subnet `2001:DB8:0:1::/64`[cite: 9]. `PC2` is assigned `2001:DB8:0:1::2/64` and uses `R2`'s EUI-64-derived IPv6 address as its default gateway.
+
+## 3. Key Concepts & Takeaways
+* **Modified EUI-64 Format:** Converts a 48-bit MAC address into a 64-bit IPv6 interface identifier by splitting the MAC address in half, inserting `FFFE` in the middle, and inverting the 7th bit (Universal/Local bit) of the first byte.
+* **Link-Local Only Interfaces (`ipv6 enable`):** Interfaces connecting routers do not require global unicast IPv6 addresses to route traffic; enabling IPv6 generates a `FE80::` link-local address sufficient for next-hop routing.
+* **IPv6 Static Routes with Link-Local Next-Hops:** When specifying a link-local address (`FE80::...`) as the next-hop in an `ipv6 route` statement, Cisco IOS requires specifying the **outgoing exit interface** as well, because link-local prefixes are identical across all links.
