@@ -18,3 +18,23 @@ configure terminal
  ipv6 route 2001:DB8:0:1::/64 GigabitEthernet0/0 <R2-G0/0-Link-Local-Address>
 end
 write memory
+
+! 2. R2 Configuration (IPv6 Routing, EUI-64, Link-Local & Static Route)
+enable
+configure terminal
+ ipv6 unicast-routing
+
+ interface GigabitEthernet0/1
+  ipv6 address 2001:DB8:0:1::/64 eui-64
+  no shutdown
+ exit
+
+ interface GigabitEthernet0/0
+  ipv6 enable
+  no shutdown
+ exit
+
+ ! Inspect R1 G0/0 link-local address first (show ipv6 interface brief)
+ ipv6 route 2001:DB8::/64 GigabitEthernet0/0 <R1-G0/0-Link-Local-Address>
+end
+write memory
