@@ -10,6 +10,11 @@ This lab focuses on deploying **IPv6** alongside an existing **IPv4** configurat
 4. Configured IPv6 addresses and IPv6 default gateways on `PC1`, `PC2`, and `PC3`.
 5. Tested end-to-end reachability between PCs using both **IPv4** (`ping`) and **IPv6** (`ping` / `ipv6` host addressing).
 
-   ## 2. Network Topology & Subnet Layout
+ ## 2. Network Topology & Subnet Layout
 
 The topology consists of a central router (`R1`) connected to three switches (`SW1`, `SW2`, `SW3`) and three end hosts (`PC1`, `PC2`, `PC3`), with IPv4 already in place and IPv6 added for dual-stack operation:
+
+* **Router 1 (`R1`):** Acts as the default gateway for all three segments (`GigabitEthernet0/0`, `GigabitEthernet0/1`, and `GigabitEthernet0/2`), routing both IPv4 and IPv6 traffic across the local subnets.
+* **Segment 1 (`SW1` & `PC1`):** Connected via `R1`'s `GigabitEthernet0/0` interface using IPv4 subnet `192.168.1.0/24` and IPv6 prefix `2001:DB8:0:1::/64` (e.g., `R1` gateway `2001:DB8:0:1::254/64` or `::1/64`, and `PC1` on the same `/64` prefix).
+* **Segment 2 (`SW2` & `PC2`):** Connected via `R1`'s `GigabitEthernet0/1` interface using IPv4 subnet `192.168.2.0/24` and IPv6 prefix `2001:DB8:0:2::/64`.
+* **Segment 3 (`SW3` & `PC3`):** Connected via `R1`'s `GigabitEthernet0/2` interface using IPv4 subnet `192.168.3.0/24` and IPv6 prefix `2001:DB8:0:3::/64`.
