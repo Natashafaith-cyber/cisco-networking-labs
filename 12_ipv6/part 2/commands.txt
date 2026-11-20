@@ -38,3 +38,22 @@ configure terminal
  ipv6 route 2001:DB8::/64 GigabitEthernet0/0 <R1-G0/0-Link-Local-Address>
 end
 write memory
+
+
+! 3. Verification Commands on R1 & R2
+show interface GigabitEthernet0/1
+show ipv6 interface brief
+show ipv6 neighbors
+show ipv6 route
+
+! 4. Host Configuration & Connectivity Test (PC1 & PC2)
+! PC1 Desktop -> IP Configuration:
+!   IPv6 Address:    2001:DB8::2 / 64
+!   Default Gateway: <R1-G0/1-EUI64-Global-Unicast-Address>
+
+! PC2 Desktop -> IP Configuration:
+!   IPv6 Address:    2001:DB8:0:1::2 / 64
+!   Default Gateway: <R2-G0/1-EUI64-Global-Unicast-Address>
+
+! Test connectivity from PC1 Command Prompt to PC2:
+ping 2001:DB8:0:1::2
