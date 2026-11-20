@@ -21,3 +21,6 @@ end
 write memory
 
 ! 2. Verification Commands on R1
+show ipv6 interface brief
+show ipv6 route
+show ipv6 protocols
