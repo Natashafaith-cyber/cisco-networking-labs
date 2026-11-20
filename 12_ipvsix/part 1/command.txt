@@ -1,1 +1,21 @@
 ! 1. R1 Configuration (Enable IPv6 Routing & Interface IPv6 Addresses)
+enable
+configure terminal
+ ipv6 unicast-routing
+
+ interface GigabitEthernet0/0
+  ipv6 address 2001:DB8:0:1::254/64
+  no shutdown
+ exit
+
+ interface GigabitEthernet0/1
+  ipv6 address 2001:DB8:0:2::254/64
+  no shutdown
+ exit
+
+ interface GigabitEthernet0/2
+  ipv6 address 2001:DB8:0:3::254/64
+  no shutdown
+ exit
+end
+write memory
