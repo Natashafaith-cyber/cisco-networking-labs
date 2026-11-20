@@ -31,3 +31,9 @@ show ipv6 protocols
    PC1: IPv6 Address = 2001:DB8:0:1::1/64 | Default Gateway = 2001:DB8:0:1::254
    PC2: IPv6 Address = 2001:DB8:0:2::1/64 | Default Gateway = 2001:DB8:0:2::254
    PC3: IPv6 Address = 2001:DB8:0:3::1/64 | Default Gateway = 2001:DB8:0:3::254
+
+! Test IPv4 & IPv6 connectivity from PC Command Prompt:
+ping 192.168.2.1
+ping 192.168.3.1
+ping 2001:DB8:0:2::1
+ping 2001:DB8:0:3::1
