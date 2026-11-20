@@ -24,3 +24,10 @@ write memory
 show ipv6 interface brief
 show ipv6 route
 show ipv6 protocols
+
+! 3. Host Configuration & Connectivity Tests (PC1, PC2, PC3)
+ Configure each PC's IPv6 Address, Prefix Length (/64), and IPv6 Default Gateway
+! in the PC Desktop -> IP Configuration panel:
+   PC1: IPv6 Address = 2001:DB8:0:1::1/64 | Default Gateway = 2001:DB8:0:1::254
+   PC2: IPv6 Address = 2001:DB8:0:2::1/64 | Default Gateway = 2001:DB8:0:2::254
+   PC3: IPv6 Address = 2001:DB8:0:3::1/64 | Default Gateway = 2001:DB8:0:3::254
