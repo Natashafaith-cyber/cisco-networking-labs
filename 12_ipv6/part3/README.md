@@ -18,3 +18,12 @@ for end hosts, and **IPv6 static routing with floating backup paths** across a m
 * **Direct Link (`R1` — `R3`):** Connects `R1` (`GigabitEthernet0/1`) to `R3` (`GigabitEthernet0/1`) over prefix `2001:DB8:0:13::/64`, serving as the primary path between `R1` and `R3`.
 * **Backup Path via `R2`:** Connects `R1` (`Serial0/0/0`) to `R2` (`Serial0/0/0`) and `R2` (`Serial0/0/1`) to `R3` (`Serial0/0/0`), used only when the direct link fails.
 * **LAN 2 (`PC2` & `SW2`):** Connected to `R3` (`GigabitEthernet0/0`) on prefix `2001:DB8:0:3::/64`.
+
+## 3. Key Concepts & Takeaways
+* **SLAAC (Stateless Address Autoconfiguration):** Hosts receive their `/64` prefix and default
+  gateway information from periodic Router Advertisement (RA) messages sent by the local router (with `ipv6 unicast-routing`
+ enabled) and generate their own interface ID (e.g., EUI-64 or randomized).
+* **Floating Static Routes in IPv6:** Appending an administrative distance value greater than `1`
+  (the default static route AD) to the `ipv6 route` command keeps the route via `R2` out of the IPv6 routing table unless the primary route is withdrawn.
+* **Next-Hop & Exit Interface Specification:** Static routes using link-local (`FE80::`) next-hop addresses specify
+  both the outgoing interface and the neighbor's link-local address.
