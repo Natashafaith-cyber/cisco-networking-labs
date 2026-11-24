@@ -30,3 +30,11 @@ configure terminal
 end
 
 ! 3. Host SLAAC & Verification Commands
+! On PC1 & PC2: Set IPv6 Configuration to Automatic (SLAAC)
+! Check assigned IPv6 address & default gateway on PC Command Prompt:
+!   ipv6config   (or ipconfig /all depending on Packet Tracer PC version)
+
+! On Routers: Verify IPv6 routing table & failover
+show ipv6 route
+show ipv6 route static
+ping <PC2-IPv6-Address>
