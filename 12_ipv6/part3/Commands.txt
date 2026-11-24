@@ -1,1 +1,6 @@
 ! 1. Enable IPv6 Unicast Routing on All Routers (R1, R2, R3)
+enable
+configure terminal
+ ipv6 unicast-routing
+end
+write memory
