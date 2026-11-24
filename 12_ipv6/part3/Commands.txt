@@ -6,3 +6,25 @@ end
 write memory
 
 ! 2. Primary & Floating Static Routes (Adjust Next-Hops per Topology)
+! On R1: Primary route to 2001:DB8:0:3::/64 via direct link (AD = 1)
+!        Floating backup route via R2 (AD = 10)
+enable
+configure terminal
+ ipv6 route 2001:DB8:0:3::/64 GigabitEthernet0/1 <R3-G0/1-Link-Local-or-GUA>
+ ipv6 route 2001:DB8:0:3::/64 Serial0/0/0 <R2-S0/0/0-Link-Local> 10
+end
+
+! On R2: Transit static routes toward LAN 1 and LAN 2
+enable
+configure terminal
+ ipv6 route 2001:DB8:0:1::/64 Serial0/0/0 <R1-S0/0/0-Link-Local>
+ ipv6 route 2001:DB8:0:3::/64 Serial0/0/1 <R3-S0/0/0-Link-Local>
+end
+
+! On R3: Primary route to 2001:DB8:0:1::/64 via direct link (AD = 1)
+!        Floating backup route via R2 (AD = 10)
+enable
+configure terminal
+ ipv6 route 2001:DB8:0:1::/64 GigabitEthernet0/1 <R1-G0/1-Link-Local-or-GUA>
+ ipv6 route 2001:DB8:0:1::/64 Serial0/0/0 <R2-S0/0/1-Link-Local> 10
+end
