@@ -28,3 +28,5 @@ configure terminal
  ipv6 route 2001:DB8:0:1::/64 GigabitEthernet0/1 <R1-G0/1-Link-Local-or-GUA>
  ipv6 route 2001:DB8:0:1::/64 Serial0/0/0 <R2-S0/0/1-Link-Local> 10
 end
+
+! 3. Host SLAAC & Verification Commands
