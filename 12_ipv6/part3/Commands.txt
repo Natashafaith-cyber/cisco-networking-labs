@@ -4,3 +4,5 @@ configure terminal
  ipv6 unicast-routing
 end
 write memory
+
+! 2. Primary & Floating Static Routes (Adjust Next-Hops per Topology)
