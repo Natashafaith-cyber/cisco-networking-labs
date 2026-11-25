@@ -21,3 +21,8 @@ configure terminal
  exit
 end
 write memory
+
+! 3. Verification Commands on R1 & R2
+show standby
+show standby brief
+show ip route
