@@ -26,3 +26,9 @@ write memory
 show standby
 show standby brief
 show ip route
+
+! 4. Host Configuration & Failover Testing (PC1 & PC2)
+! Set Default Gateway on PC1 and PC2 to: 10.0.1.254
+! From PC Command Prompt:
+ping 8.8.8.8
+arp -a
