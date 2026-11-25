@@ -20,3 +20,12 @@ to provide default gateway redundancy, active/standby failover, and preemption f
 * **LAN Segment (`10.0.1.0/24`):** Connects `PC1` and `PC2` through access/distribution switches (`SW1`–`SW4`) to redundant default gateways `R1` (`10.0.1.253`) and `R2` (`10.0.1.252`).
 * **HSRP Virtual IP (VIP):** `10.0.1.254` acts as the logical default gateway for end hosts in `10.0.1.0/24`, allowing seamless failover without changing host IP settings.
 * **WAN / Upstream Links:** `R1` connects upstream via `203.0.113.0/30` and `R2` connects via `203.0.113.4/30` toward `R3` and external reachability (`8.8.8.8`).
+
+  
+## 3. Key Concepts & Takeaways
+* **HSRPv2:** Uses version 2 multicast (`224.0.0.102` / IPv6 `FF02::66`) and a distinct virtual MAC address range (`0000.0C9F.Fxxx`, where `xxx` is the hex group number)
+so hosts always send gateway frames to a single virtual MAC regardless of which router is currently Active.
+* **Priority & Preemption:** Default HSRP priority is `100` (higher wins Active; tie-breaker is highest IPv4 address).
+   By default, a router will not preempt an existing Active router even if it has a higher priority unless `standby <group> preempt` is configured.
+* **ARP Stability During Failover:** Because both Active and Standby routers forward frames addressed to the HSRP virtual MAC,
+  hosts do not need to flush or change their ARP entry for the VIP when failover occurs.
