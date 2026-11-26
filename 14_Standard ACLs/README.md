@@ -22,3 +22,9 @@ rules are applied outbound as close to the destination networks as possible to a
   * On `R2`, outbound standard named ACLs on `G0/0` (toward `192.168.1.0/24`) and `G0/1` (toward `192.168.2.0/24`) control traffic entering the server subnets.
   * On `R1`, outbound standard numbered ACLs on `G0/1` (toward `172.16.2.0/24`) and `G0/0` (toward `172.16.1.0/24`)
      block traffic between the two client subnets (`172.16.1.0/24` and `172.16.2.0/24`) without blocking traffic from `R2` (`203.0.113.0/30`).
+
+## 3. Key Concepts & Takeaways
+* **Standard ACL Filtering:** Evaluates only the **source IPv4 address** and wildcard mask; place close to the destination to prevent blocking traffic to other networks.
+* **Implicit `deny any`:** Every ACL ends with an invisible `deny any` statement, so explicit `permit` entries are required for allowed traffic
+  (such as `SRV1`/`SRV2` return or management traffic if needed).
+* **Numbered vs. Named Standard ACLs:** Numbered standard ACLs use IDs `1–99` or `1300–1999`, while named standard ACLs use `ip access-list standard <NAME>` and allow easier line edits/removals.
