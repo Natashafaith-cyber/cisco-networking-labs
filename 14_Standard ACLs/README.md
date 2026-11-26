@@ -10,3 +10,15 @@ rules are applied outbound as close to the destination networks as possible to a
 2. Enforced the policy allowing **only `PC1` (`172.16.1.1`) and `PC3` (`172.16.2.1`)** to access `192.168.1.0/24` (where `SRV1` resides).
 3. Blocked hosts in `172.16.2.0/24` from accessing `192.168.2.0/24` (where `SRV2` resides).
 4. Prevented bidirectional inter-VLAN/subnet access between `172.16.1.0/24` and `172.16.2.0/24` using standard ACLs on `R1`.
+
+   
+## 2. Network Topology & Policy Placement
+
+* **Router `R1` (Access/Client Side):** Connects to `172.16.1.0/24` (`G0/0`, `.254`, hosting `PC1` at `.1` and
+   `PC2` at `.2`), `172.16.2.0/24` (`G0/1`, `.254`, hosting `PC3` at `.1` and `PC4` at `.2`), and links to `R2` over `203.0.113.0/30` (`S0/0/0`, `.1`).
+* **Router `R2` (Server Side):** Connects to `R1` over `203.0.113.0/30` (`S0/0/0`, `.2`), `192.168.1.0/24` (`G0/0`, `.254`, hosting `SRV1` at `.100`),
+   and `192.168.2.0/24` (`G0/1`, `.254`, hosting `SRV2` at `.100`).
+* **Placement Strategy:**
+  * On `R2`, outbound standard named ACLs on `G0/0` (toward `192.168.1.0/24`) and `G0/1` (toward `192.168.2.0/24`) control traffic entering the server subnets.
+  * On `R1`, outbound standard numbered ACLs on `G0/1` (toward `172.16.2.0/24`) and `G0/0` (toward `172.16.1.0/24`)
+     block traffic between the two client subnets (`172.16.1.0/24` and `172.16.2.0/24`) without blocking traffic from `R2` (`203.0.113.0/30`).
