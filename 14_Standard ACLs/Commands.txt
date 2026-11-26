@@ -10,7 +10,6 @@ configure terminal
  exit
 end
 
-
 ! On R2:
 enable
 configure terminal
@@ -21,3 +20,13 @@ configure terminal
   network 203.0.113.0 0.0.0.3 area 0
  exit
 end
+
+! 2. Standard Numbered ACLs on R1 (Blocking 172.16.1.0/24 <-> 172.16.2.0/24)
+! ACL 10 (outbound on G0/1 toward 172.16.2.0/24): block 172.16.1.0/24, allow others (e.g., 203.0.113.0/30)
+! ACL 20 (outbound on G0/0 toward 172.16.1.0/24): block 172.16.2.0/24, allow others (e.g., 203.0.113.0/30)
+enable
+configure terminal
+ access-list 10 deny 172.16.1.0 0.0.0.255
+ access-list 10 permit any
+
+
