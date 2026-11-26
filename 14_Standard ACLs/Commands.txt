@@ -29,4 +29,18 @@ configure terminal
  access-list 10 deny 172.16.1.0 0.0.0.255
  access-list 10 permit any
 
+access-list 20 deny 172.16.2.0 0.0.0.255
+ access-list 20 permit any
+
+ interface GigabitEthernet0/1
+  ip access-group 10 out
+ exit
+
+ interface GigabitEthernet0/0
+  ip access-group 20 out
+ exit
+end
+write memory
+
+
 
