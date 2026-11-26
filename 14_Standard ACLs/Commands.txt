@@ -67,4 +67,10 @@ ip access-list standard BLOCK_172_2_TO_192_2
 end
 write memory
 
+! 4. Verification Commands
+show access-lists
+show ip interface
+show ip ospf neighbor
+show ip route
+
 
