@@ -42,5 +42,14 @@ access-list 20 deny 172.16.2.0 0.0.0.255
 end
 write memory
 
+! 3. Standard Named ACLs on R2 (Server Subnet Policies)
+! ALLOW_192_168_1 (outbound on G0/0 toward 192.168.1.0/24): only PC1 (172.16.1.1) and PC3 (172.16.2.1)
+! BLOCK_172_2_TO_192_2 (outbound on G0/1 toward 192.168.2.0/24): deny 172.16.2.0/24, permit others
+enable
+configure terminal
+ ip access-list standard ALLOW_192_168_1
+  permit host 172.16.1.1
+  permit host 172.16.2.1
+ exit
 
 
