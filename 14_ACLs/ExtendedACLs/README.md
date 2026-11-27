@@ -19,3 +19,10 @@ The topology mirrors the dual-router layout with client LANs on `R1` and server 
 * **WAN Transit (`203.0.113.0/30`):** Connects `R1` `Serial0/0/0` (`.1`) to `R2` `Serial0/0/0` (`.2`).
 * **Server LAN 1 (`192.168.1.0/24`):** Connected to `R2` `GigabitEthernet0/0` (`.254`) via `SW3`, hosting `SRV1` (`.100`).
 * **Server LAN 2 (`192.168.2.0/24`):** Connected to `R2` `GigabitEthernet0/1` (`.254`) via `SW4`, hosting `SRV2` (`.100`).
+
+## 3. Key Concepts & Takeaways
+* **Extended ACL Matching:** Evaluates both source and destination IP addresses along with Layer 4 protocols and port numbers (`eq domain` / `53`, `eq www` / `80`, `eq 443`).
+* **Source-Based Placement:** Extended ACLs are typically applied **inbound** on the interface closest to the source traffic
+  (such as `R1`'s LAN interfaces) to drop disallowed packets immediately before they traverse links.
+* **Explicit `permit ip any any`:** Because every ACL ends with an implicit `deny any`, include an explicit permit rule at the end of ACLs intended to allow all other traffic.
+
