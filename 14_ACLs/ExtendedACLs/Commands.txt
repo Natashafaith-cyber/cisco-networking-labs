@@ -2,3 +2,12 @@
 ! Policy 1: Hosts in 172.16.2.0/24 cannot communicate with PC1 (172.16.1.1)
 ! Policy 2: Hosts in 172.16.1.0/24 cannot access DNS on SRV1 (192.168.1.100)
 ! Policy 3: Hosts in 172.16.2.0/24 cannot access HTTP/HTTPS on SRV2 (192.168.2.100)
+
+enable
+configure terminal
+
+ ip access-list extended ACL_LAN1_IN
+  deny udp 172.16.1.0 0.0.0.255 host 192.168.1.100 eq domain
+  deny tcp 172.16.1.0 0.0.0.255 host 192.168.1.100 eq domain
+  permit ip any any
+ exit
