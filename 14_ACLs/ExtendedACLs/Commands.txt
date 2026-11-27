@@ -11,3 +11,10 @@ configure terminal
   deny tcp 172.16.1.0 0.0.0.255 host 192.168.1.100 eq domain
   permit ip any any
  exit
+
+ip access-list extended ACL_LAN2_IN
+  deny ip 172.16.2.0 0.0.0.255 host 172.16.1.1
+  deny tcp 172.16.2.0 0.0.0.255 host 192.168.2.100 eq www
+  deny tcp 172.16.2.0 0.0.0.255 host 192.168.2.100 eq 443
+  permit ip any any
+ exit
