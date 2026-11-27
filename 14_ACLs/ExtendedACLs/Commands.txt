@@ -29,3 +29,14 @@ interface GigabitEthernet0/0
 
 end
 write memory
+
+! 2. Verification & Testing Commands
+show access-lists
+show ip interface brief
+
+! Test from PC3 (172.16.2.1):
+!   ping 172.16.1.1          -> Should fail / time out
+!   HTTP/HTTPS to 192.168.2.100 -> Should be blocked
+
+! Test from PC1 (172.16.1.1):
+!   DNS lookup/query to 192.168.1.100 -> Should be blocked
